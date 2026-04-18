@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import SectionHeader from "@/components/Center/SectionHeader";
 import { useIntl } from "react-intl";
 
 type Experience = {
@@ -15,7 +16,6 @@ type Experience = {
   periodId: string;
   locationId: string;
   logoText: string;
-  logoClassName: string;
   highlightIds: string[];
 };
 
@@ -28,7 +28,6 @@ const experiences: Experience[] = [
     periodId: "experiences.shanghaiByteIntern.period",
     locationId: "experiences.shanghaiByteIntern.location",
     logoText: "B",
-    logoClassName: "bg-sky-500/90 text-white",
     highlightIds: [
       "experiences.shanghaiByteIntern.highlight.1",
       "experiences.shanghaiByteIntern.highlight.2",
@@ -43,8 +42,6 @@ const experiences: Experience[] = [
     periodId: "experiences.shenzhenCommerceIntern.period",
     locationId: "experiences.shenzhenCommerceIntern.location",
     logoText: "S",
-    logoClassName:
-      "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100",
     highlightIds: [
       "experiences.shenzhenCommerceIntern.highlight.1",
       "experiences.shenzhenCommerceIntern.highlight.2",
@@ -59,7 +56,6 @@ const experiences: Experience[] = [
     periodId: "experiences.hangzhouCloudEngineer.period",
     locationId: "experiences.hangzhouCloudEngineer.location",
     logoText: "H",
-    logoClassName: "bg-emerald-500/90 text-white",
     highlightIds: [
       "experiences.hangzhouCloudEngineer.highlight.1",
       "experiences.hangzhouCloudEngineer.highlight.2",
@@ -78,15 +74,13 @@ function ExperienceItem({
   return (
     <AccordionItem
       value={experience.id}
-      className="group border-b-0 not-last:border-b-0 px-4 transition-colors hover:bg-muted/40 mx-1"
+      className="group mx-1 border-b-0 px-4 transition-colors hover:bg-muted/40"
     >
       <AccordionTrigger className="hover:no-underline">
         <div className="flex w-full flex-col items-start justify-between pr-2 sm:flex-row">
           <div className="flex min-w-0 items-start gap-4">
             <div className="flex size-14 shrink-0 items-center justify-center rounded-xl border bg-background shadow-sm">
-              <div
-                className={`flex size-10 items-center justify-center rounded-lg text-sm font-bold ${experience.logoClassName}`}
-              >
+              <div className="flex size-10 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
                 {experience.logoText}
               </div>
             </div>
@@ -119,8 +113,8 @@ function ExperienceItem({
         </div>
       </AccordionTrigger>
 
-      <AccordionContent className="h-auto">
-        <ul className="mt-2 space-y-2 md:pl-5 pl-2 text-sm text-muted-foreground">
+      <AccordionContent>
+        <ul className="mt-2 flex flex-col gap-2 pl-2 text-sm text-muted-foreground md:pl-5">
           {experience.highlightIds.map((highlightId) => (
             <li key={highlightId}>{intl.formatMessage({ id: highlightId })}</li>
           ))}
@@ -135,10 +129,9 @@ export default function Experiences() {
 
   return (
     <>
-      <div className="px-4 py-2 text-lg font-medium">
+      <SectionHeader>
         {intl.formatMessage({ id: "introduce.experiences" })}
-      </div>
-      <div className="double-divider" />
+      </SectionHeader>
 
       <Accordion type="single" collapsible>
         {experiences.map((experience, index) => (

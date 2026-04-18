@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 interface RoleCycleProps {
   roles: string[];
@@ -28,11 +29,12 @@ export function RoleCycle({ roles }: RoleCycleProps) {
   return (
     <div className="relative text-sm text-muted-foreground h-5 w-42 flex flex-col justify-center overflow-hidden">
       <div
-        className={`absolute w-full whitespace-nowrap duration-500 fill-mode-forwards ${
+        className={cn(
+          "absolute w-full whitespace-nowrap duration-500 fill-mode-forwards",
           isExiting
             ? "animate-out fade-out slide-out-to-top-4"
-            : "animate-in fade-in slide-in-from-bottom-4"
-        }`}
+            : "animate-in fade-in slide-in-from-bottom-4",
+        )}
       >
         {roles[index]}
       </div>

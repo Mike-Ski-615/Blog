@@ -1,15 +1,14 @@
-import { useProject } from "@/hooks/useProjects";
+import type { Project } from "@/data/projects";
 import { useLanguage } from "@/provider/language-provider";
 import { OverviewTab } from "./OverviewTab";
 import { ReadmeTab } from "./ReadmeTab";
 import { WebsiteTab } from "./WebsiteTab";
 
 type MainProps = {
-  slug: string;
+  project: Project;
 };
 
-export default function Main({ slug }: MainProps) {
-  const project = useProject(slug);
+export default function Main({ project }: MainProps) {
   const { locale } = useLanguage();
 
   return (

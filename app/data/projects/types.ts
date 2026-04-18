@@ -5,6 +5,12 @@ export const PROJECT_SLUGS = [
 
 export type ProjectSlug = (typeof PROJECT_SLUGS)[number];
 
+const PROJECT_SLUG_SET = new Set(PROJECT_SLUGS);
+
+export function isProjectSlug(slug: string): slug is ProjectSlug {
+  return PROJECT_SLUG_SET.has(slug as ProjectSlug);
+}
+
 export type LinkType = "github" | "demo" | "website" | "readme" | "issues";
 
 export type ProjectStatus = "building" | "online" | "beta" | "concept";

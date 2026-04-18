@@ -7,7 +7,7 @@ export default {
   async prerender({ getStaticPaths }) {
     return [
       ...getStaticPaths(),
-      ...PROJECT_SLUGS.map((slug) => `/projects/${slug}`),
+      ...PROJECT_SLUGS.map((slug) => `/${slug}`),
     ];
   },
 } satisfies Config;

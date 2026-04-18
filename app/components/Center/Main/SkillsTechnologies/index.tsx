@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import SectionHeader from "@/components/Center/SectionHeader";
 import {
   IconBrandNextjs,
   IconBrandReact,
@@ -55,18 +56,17 @@ export default function SkillsTechnologies() {
 
   return (
     <>
-      <div className="px-4 py-2 h-auto text-lg font-medium">
+      <SectionHeader>
         {intl.formatMessage({ id: "introduce.skills" })}
-      </div>
-      <div className="double-divider" />
-      <ul className="flex flex-wrap items-center justify-center gap-2 px-4 py-2 h-auto">
+      </SectionHeader>
+      <ul className="flex flex-wrap items-center justify-center gap-2 px-4 py-2">
         {skills.map((skill) => {
           const Icon = skill.icon;
 
           return (
             <li key={skill.name}>
               <Button variant="outline">
-                {Icon && <Icon size={18} />}
+                {Icon && <Icon data-icon="inline-start" />}
                 {skill.name}
               </Button>
             </li>

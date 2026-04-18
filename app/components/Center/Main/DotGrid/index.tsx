@@ -1,8 +1,14 @@
-export default function DotGrid() {
+import { cn } from "@/lib/utils";
+
+type DotGridProps = {
+  className?: string;
+};
+
+export default function DotGrid({ className }: DotGridProps) {
   return (
-    <div className="p-2 h-48">
+    <div className={cn("h-48 p-2", className)}>
       <div
-        className="w-full h-full"
+        className="size-full"
         style={{
           backgroundImage: `radial-gradient(var(--border) 1.25px, transparent 1.25px)`,
           backgroundSize: `8px 8px`,

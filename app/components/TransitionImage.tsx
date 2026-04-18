@@ -10,12 +10,14 @@ export function TransitionImage({
   alt,
 }: TransitionImageProps) {
   return (
-    <div className="relative size-full aspect-video rounded-xl border border-border p-1 overflow-hidden">
+    <div
+      className="relative aspect-video size-full overflow-hidden rounded-xl border border-border p-1"
+      style={{ viewTransitionName: transitionName }}
+    >
       <img
         src={src}
         alt={alt}
-        className="block size-full object-cover rounded-lg"
-        style={{ viewTransitionName: transitionName }}
+        className="block size-full rounded-lg object-cover"
       />
     </div>
   );

@@ -3,7 +3,7 @@ import type { Project, ProjectSlug } from "./types";
 export const zhProjects: Record<ProjectSlug, Project> = {
   "nextjs-authentication-scaffold": {
     slug: "nextjs-authentication-scaffold",
-    cover: "/images/projects/nextjs-authentication-scaffold.png",
+    cover: "/images/projects/nextjs-authentication-scaffold.webp",
     name: "Next.js-Authentication-Scaffold",
     summary:
       "一个功能完整、模块化的 Next.js 认证系统脚手架，支持邮箱/手机 OTP、Passkey 生物认证与钱包连接。",
@@ -44,7 +44,7 @@ export const zhProjects: Record<ProjectSlug, Project> = {
   },
   "three-d-face-particles": {
     slug: "three-d-face-particles",
-    cover: "/images/projects/3d-face.png",
+    cover: "/images/projects/3d-face.webp",
     name: "3D Face Particles",
     summary:
       "基于深度图与 GLSL 的人脸粒子重建实验，支持多人脸插值切换与噪声驱动形变。",

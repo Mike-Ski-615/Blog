@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import SectionHeader from "@/components/Center/SectionHeader";
 import { IconBook2, IconCodeDots, IconTargetArrow } from "@tabler/icons-react";
 import { useIntl } from "react-intl";
 
@@ -31,10 +32,7 @@ export default function Now() {
 
   return (
     <>
-      <div className="px-4 py-2 text-lg font-medium">
-        {intl.formatMessage({ id: "now.title" })}
-      </div>
-      <div className="double-divider" />
+      <SectionHeader>{intl.formatMessage({ id: "now.title" })}</SectionHeader>
 
       <div className="px-1">
         {nowItems.map((item, index) => {
@@ -44,7 +42,7 @@ export default function Now() {
             <div key={item.id}>
               <article className="flex gap-3 p-4 transition-colors hover:bg-muted/40">
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-lg border bg-background">
-                  <Icon />
+                  <Icon aria-hidden="true" />
                 </div>
 
                 <div className="min-w-0 flex flex-col gap-2">

@@ -1,17 +1,22 @@
 import { TransitionImage } from "@/components/TransitionImage";
-import { useProject } from "@/hooks/useProjects";
+import type { Project } from "@/data/projects";
+import { useViewTransitionState } from "react-router";
 
 type ImageProps = {
+  project: Project;
   slug: string;
 };
 
-export default function Image({ slug }: ImageProps) {
-  const project = useProject(slug);
+export default function Image({ project, slug }: ImageProps) {
+  const isProjectTransitioning = useViewTransitionState(`/${slug}`);
+  const transitionName = isProjectTransitioning
+    ? `project-cover-${slug}`
+    : "none";
 
   return (
-    <div className="px-4 w-full p-4">
+    <div className="p-4">
       <TransitionImage
-        transitionName={`project-cover-${slug}`}
+        transitionName={transitionName}
         src={project.cover}
         alt={project.name}
       />

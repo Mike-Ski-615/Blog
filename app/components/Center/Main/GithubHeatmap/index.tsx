@@ -1,6 +1,7 @@
 import { ActivityCalendar } from "react-activity-calendar";
 import { useCallback, useMemo, type ReactElement, type SVGProps } from "react";
 import { useIntl } from "react-intl";
+import SectionHeader from "@/components/Center/SectionHeader";
 import { useLanguage } from "@/provider/language-provider";
 
 const getDateSeed = (date: string) =>
@@ -126,11 +127,8 @@ export default function Calendar() {
 
   return (
     <>
-      <div className="px-4 py-2 text-lg font-medium">
-        {intl.formatMessage({ id: "github.title" })}
-      </div>
-      <div className="double-divider" />
-      <div className="h-auto px-2 py-2 sm:px-4">
+      <SectionHeader>{intl.formatMessage({ id: "github.title" })}</SectionHeader>
+      <div className="px-2 py-2 sm:px-4">
         <ActivityCalendar
           className="!w-full"
           data={data}

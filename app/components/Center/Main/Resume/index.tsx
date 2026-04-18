@@ -1,39 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  IconCheck,
-  IconCopy,
-  IconDownload,
-  IconMapPin,
-  IconStack2,
-  IconUserSearch,
-} from "@tabler/icons-react";
+import SectionHeader from "@/components/Center/SectionHeader";
+import { IconCheck, IconCopy, IconDownload } from "@tabler/icons-react";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 
 const resumePath = "/documents/resume-mike-ski.md";
 const emailAddress = "gvjk0631@gmail.com";
-
-const resumeFacts = [
-  {
-    id: "role",
-    icon: IconUserSearch,
-    labelId: "resume.fact.role.label",
-    valueId: "resume.fact.role.value",
-  },
-  {
-    id: "stack",
-    icon: IconStack2,
-    labelId: "resume.fact.stack.label",
-    valueId: "resume.fact.stack.value",
-  },
-  {
-    id: "location",
-    icon: IconMapPin,
-    labelId: "resume.fact.location.label",
-    valueId: "resume.fact.location.value",
-  },
-];
 
 export default function Resume() {
   const intl = useIntl();
@@ -52,10 +25,7 @@ export default function Resume() {
 
   return (
     <>
-      <div className="px-4 py-2 text-lg font-medium">
-        {intl.formatMessage({ id: "resume.title" })}
-      </div>
-      <div className="double-divider" />
+      <SectionHeader>{intl.formatMessage({ id: "resume.title" })}</SectionHeader>
 
       <div className="flex flex-col gap-4 p-4">
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

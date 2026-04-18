@@ -183,7 +183,8 @@ export function ScrollAnchorToc() {
 
     const sectionRect = section.getBoundingClientRect();
     const sectionTop = sectionRect.top + window.scrollY;
-    const centeredTop = sectionTop - (window.innerHeight - sectionRect.height) / 2;
+    const centeredTop =
+      sectionTop - (window.innerHeight - sectionRect.height) / 2;
     const maxScroll = Math.max(
       document.documentElement.scrollHeight - window.innerHeight,
       0,

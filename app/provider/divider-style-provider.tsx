@@ -4,7 +4,11 @@ export type DividerStyle =
   | "double-solid"
   | "single-dashed"
   | "soft-fade"
-  | "dot-chain";
+  | "dot-chain"
+  | "hairline"
+  | "dash-dot"
+  | "center-glow"
+  | "woven-grid";
 
 type DividerStyleProviderProps = {
   children: React.ReactNode;
@@ -30,6 +34,10 @@ const DIVIDER_STYLE_VALUES: DividerStyle[] = [
   "single-dashed",
   "soft-fade",
   "dot-chain",
+  "hairline",
+  "dash-dot",
+  "center-glow",
+  "woven-grid",
 ];
 
 const isBrowser = () => typeof window !== "undefined";

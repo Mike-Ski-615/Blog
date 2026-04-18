@@ -12,7 +12,7 @@ export default function Header({ slug }: HeaderProps) {
   const intl = useIntl();
 
   return (
-    <div className="flex justify-between items-center py-2 px-4 h-auto">
+    <div className="flex items-center justify-between px-4 py-2">
       <div className="flex items-center gap-2 text-lg font-bold leading-tight text-title">
         <Button variant="ghost" size="icon-sm" asChild>
           <Link
@@ -20,7 +20,7 @@ export default function Header({ slug }: HeaderProps) {
             state={{ viewTransitionProjectSlug: slug }}
             viewTransition
           >
-            <IconChevronLeft />
+            <IconChevronLeft data-icon="inline-start" />
           </Link>
         </Button>
         {intl.formatMessage({ id: "projectDetail.title" })}

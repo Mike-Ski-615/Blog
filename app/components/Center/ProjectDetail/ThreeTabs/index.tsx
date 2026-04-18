@@ -35,7 +35,7 @@ export default function ThreeTabs({ slug }: ThreeTabsProps) {
           {index > 0 && <Separator orientation="vertical" />}
           <TabsTrigger
             value={tab.value}
-            className="min-w-0 flex-1 basis-0 rounded-none data-active:bg-transparent data-active:text-foreground dark:data-active:bg-transparent"
+            className="min-w-0 flex-1 basis-0 rounded-none data-active:bg-transparent data-active:text-foreground"
           >
             {tab.label}
           </TabsTrigger>

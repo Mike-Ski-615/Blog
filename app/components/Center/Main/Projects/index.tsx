@@ -1,10 +1,10 @@
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import { useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useViewTransitionState } from "react-router";
 import { PROJECT_SLUGS, type Project } from "@/data/projects";
+import SectionHeader from "@/components/Center/SectionHeader";
 import { useProjects } from "@/hooks/useProjects";
-import { getProjectStatusStyle } from "@/lib/project-status";
 import { TransitionImage } from "@/components/TransitionImage";
 import { Badge } from "@/components/ui/badge";
 
@@ -19,21 +19,25 @@ type ProjectCardData = Pick<
 
 function ProjectCard({ project }: { project: ProjectCardData }) {
   const intl = useIntl();
-  const statusStyle = getProjectStatusStyle(project.status);
+  const projectHref = `/${project.slug}`;
+  const isProjectTransitioning = useViewTransitionState(projectHref);
+  const transitionName = isProjectTransitioning
+    ? `project-cover-${project.slug}`
+    : "none";
   const statusLabel = intl.formatMessage({
     id: `common.status.${project.status}`,
   });
 
   return (
     <Link
-      to={`/projects/${project.slug}`}
+      to={projectHref}
       viewTransition
       data-project-slug={project.slug}
       className="group flex w-full flex-col p-4 text-left transition-colors hover:bg-muted/40"
     >
       <div className="flex flex-col gap-3 transition-all duration-300 group-hover:-translate-y-1">
         <TransitionImage
-          transitionName={`project-cover-${project.slug}`}
+          transitionName={transitionName}
           src={project.cover}
           alt={project.name}
         />
@@ -46,7 +50,7 @@ function ProjectCard({ project }: { project: ProjectCardData }) {
 
             <Badge
               variant="outline"
-              className={`shrink-0 ${statusStyle.badge}`}
+              className="shrink-0 bg-muted text-foreground"
             >
               <span className="relative size-1.5 rounded-full bg-current before:absolute before:inset-0 before:animate-ping before:rounded-full before:bg-current" />
               <span>{statusLabel}</span>
@@ -58,7 +62,7 @@ function ProjectCard({ project }: { project: ProjectCardData }) {
 
           <span className="flex items-center gap-1 pt-1 text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
             {intl.formatMessage({ id: "projectCard.viewDetails" })}
-            <IconArrowNarrowRight size={18} />
+            <IconArrowNarrowRight data-icon="inline-end" />
           </span>
         </div>
       </div>
@@ -107,10 +111,9 @@ export default function Projects() {
 
   return (
     <>
-      <div className="px-4 py-2 text-lg font-medium">
+      <SectionHeader>
         {intl.formatMessage({ id: "introduce.projects" })}
-      </div>
-      <div className="double-divider" />
+      </SectionHeader>
       <div className="px-1">
         {projectRows.map((row, rowIndex) => (
           <div key={rowIndex}>

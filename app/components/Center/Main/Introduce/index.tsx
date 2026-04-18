@@ -14,7 +14,7 @@ export default function Introduce() {
   const intl = useIntl();
 
   return (
-    <div className="flex flex-col items-start p-4 gap-3 h-auto">
+    <div className="flex flex-col items-start gap-3 p-4">
       <p className="text-sm">
         {intl.formatMessage({ id: "introduce.greeting" })}
       </p>
@@ -22,7 +22,7 @@ export default function Introduce() {
       <p className="text-sm">
         <HoverCard openDelay={10} closeDelay={100}>
           <HoverCardTrigger asChild>
-            <Button variant="link" className="p-0 h-5">
+            <Button variant="link" className="h-5 p-0">
               {intl.formatMessage({ id: "introduce.school" })}
             </Button>
           </HoverCardTrigger>

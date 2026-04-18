@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import { useIntl } from "react-intl";
 import { Button } from "@/components/ui/button";
 import {
@@ -130,12 +129,7 @@ export function ReadmeTab({ locale, slug }: ReadmeTabProps) {
       <p className="text-sm text-muted-foreground">{markdownError}</p>
     ) : (
       <article className="flex max-w-none flex-col gap-3 overflow-hidden text-sm">
-        <ReactMarkdown
-          components={markdownComponents}
-          rehypePlugins={[rehypeRaw]}
-        >
-          {markdown}
-        </ReactMarkdown>
+        <ReactMarkdown components={markdownComponents}>{markdown}</ReactMarkdown>
       </article>
     );
 

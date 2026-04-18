@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { TabsContent } from "@/components/ui/tabs";
 import type { LinkType, Project } from "@/data/projects";
 import { LINK_CONFIG } from "@/lib/project-links";
-import { getProjectStatusStyle } from "@/lib/project-status";
 
 type OverviewTabProps = {
   project: Project;
@@ -20,7 +19,6 @@ type ProjectLinkItem = {
 
 export function OverviewTab({ project }: OverviewTabProps) {
   const intl = useIntl();
-  const statusStyle = getProjectStatusStyle(project.status);
   const statusLabel = intl.formatMessage({
     id: `common.status.${project.status}`,
   });
@@ -52,7 +50,10 @@ export function OverviewTab({ project }: OverviewTabProps) {
           <h1 className="min-w-0 flex-1 text-2xl font-bold leading-tight tracking-tight text-title">
             {project.name}
           </h1>
-          <Badge variant="outline" className={`shrink-0 ${statusStyle.badge}`}>
+          <Badge
+            variant="outline"
+            className="shrink-0 bg-muted text-foreground"
+          >
             <span className="relative size-1.5 rounded-full bg-current before:absolute before:inset-0 before:animate-ping before:rounded-full before:bg-current" />
             <span>{statusLabel}</span>
           </Badge>

@@ -86,7 +86,7 @@ export function WebsiteTab({ githubUrl }: WebsiteTabProps) {
                 value={protocol.value}
                 className="flex flex-col gap-3"
               >
-                <InputGroup className="h-auto min-h-12 rounded-lg px-2">
+                <InputGroup className="min-h-12 rounded-lg px-2">
                   <InputGroupInput
                     aria-label={protocol.label}
                     readOnly
@@ -106,9 +106,9 @@ export function WebsiteTab({ githubUrl }: WebsiteTabProps) {
                       size="icon-sm"
                     >
                       {copiedCloneProtocol === protocol.value ? (
-                        <IconCheck />
+                        <IconCheck data-icon="inline-start" />
                       ) : (
-                        <IconCopy />
+                        <IconCopy data-icon="inline-start" />
                       )}
                     </InputGroupButton>
                   </InputGroupAddon>

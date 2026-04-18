@@ -7,7 +7,7 @@ export default function SendEmail() {
 
   return (
     <Button size="sm" variant="outline">
-      <IconMail />
+      <IconMail data-icon="inline-start" />
       {intl.formatMessage({ id: "sendEmail.cta" })}
     </Button>
   );

@@ -7,7 +7,7 @@ export default function Reserve() {
 
   return (
     <Button variant="default" size="sm">
-      <IconCalendarWeek />
+      <IconCalendarWeek data-icon="inline-start" />
       {intl.formatMessage({ id: "reserve.trigger" })}
     </Button>
   );

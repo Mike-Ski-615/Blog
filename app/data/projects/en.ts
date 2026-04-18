@@ -3,7 +3,7 @@ import type { Project, ProjectSlug } from "./types";
 export const enProjects: Record<ProjectSlug, Project> = {
   "nextjs-authentication-scaffold": {
     slug: "nextjs-authentication-scaffold",
-    cover: "/images/projects/nextjs-authentication-scaffold.png",
+    cover: "/images/projects/nextjs-authentication-scaffold.webp",
     name: "Next.js-Authentication-Scaffold",
     summary:
       "A full-featured, modular Next.js authentication system scaffold with Email/Phone OTP, passkeys, and wallet connections.",
@@ -44,7 +44,7 @@ export const enProjects: Record<ProjectSlug, Project> = {
   },
   "three-d-face-particles": {
     slug: "three-d-face-particles",
-    cover: "/images/projects/3d-face.png",
+    cover: "/images/projects/3d-face.webp",
     name: "3D Face Particles",
     summary:
       "A GPU particle-face experiment driven by depth maps, shader noise fields, and smooth face-to-face morph transitions.",

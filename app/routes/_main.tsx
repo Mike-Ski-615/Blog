@@ -8,13 +8,17 @@ export default function MainLayout() {
   return (
     <main className="flex flex-col">
       <ViewportFade />
+
       <SectionFrame>
         <DotGrid />
       </SectionFrame>
+
       <Outlet />
+
       <SectionFrame>
         <DotGrid />
       </SectionFrame>
+
       <BackToTopButton />
     </main>
   );
