@@ -13,19 +13,19 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: "light",
   setTheme: () => null,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-const THEME_VALUES: Theme[] = ["dark", "light", "system"];
+const THEME_VALUES: Theme[] = ["dark", "light"];
 
 const isBrowser = () => typeof window !== "undefined";
 
-const getStoredTheme = (storageKey: string, fallback: Theme): Theme => {
+const getStoredTheme = (storageKey: string): Theme | null => {
   if (!isBrowser()) {
-    return fallback;
+    return null;
   }
 
   try {
@@ -37,49 +37,46 @@ const getStoredTheme = (storageKey: string, fallback: Theme): Theme => {
     // Ignore storage access failures (private mode, disabled storage, SSR).
   }
 
-  return fallback;
+  return null;
 };
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "light",
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() =>
-    getStoredTheme(storageKey, defaultTheme),
-  );
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [hasLoadedTheme, setHasLoadedTheme] = useState(false);
+
+  useEffect(() => {
+    const storedTheme = getStoredTheme(storageKey);
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+
+    setHasLoadedTheme(true);
+  }, [storageKey]);
 
   useEffect(() => {
     const root = window.document.documentElement;
+    root.classList.remove(...THEME_VALUES);
+    root.classList.add(theme);
 
-    root.classList.remove("light", "dark");
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-
-      root.classList.add(systemTheme);
+    if (!hasLoadedTheme) {
       return;
     }
 
-    root.classList.add(theme);
-  }, [theme]);
+    try {
+      window.localStorage.setItem(storageKey, theme);
+    } catch {
+      // Ignore storage write failures and keep the in-memory theme.
+    }
+  }, [hasLoadedTheme, storageKey, theme]);
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      if (isBrowser()) {
-        try {
-          window.localStorage.setItem(storageKey, theme);
-        } catch {
-          // Ignore storage write failures and still update in-memory state.
-        }
-      }
-      setTheme(theme);
-    },
+    setTheme,
   };
 
   return (

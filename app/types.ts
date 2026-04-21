@@ -1,6 +1,6 @@
 export type SiteLanguage = "en-US" | "zh-CN";
 
-export type Theme = "dark" | "light" | "system";
+export type Theme = "dark" | "light";
 
 export type DividerStyle =
   | "double-solid"

@@ -313,7 +313,6 @@ const ui = {
     themeOptions: {
       light: "Light",
       dark: "Dark",
-      system: "System",
     },
     dividerOptions: {
       "double-solid": "Double solid",

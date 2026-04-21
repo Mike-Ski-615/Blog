@@ -1,6 +1,5 @@
 import {
   Languages,
-  Monitor,
   Moon,
   Settings,
   Sun,
@@ -36,7 +35,6 @@ type SettingsOption<T extends string> = {
 const themeOptions = [
   { value: "light", icon: Sun },
   { value: "dark", icon: Moon },
-  { value: "system", icon: Monitor },
 ] as const satisfies readonly SettingsOption<string>[];
 
 const dividerOptions = [

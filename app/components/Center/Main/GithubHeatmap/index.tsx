@@ -4,6 +4,7 @@ import SectionHeader from "@/components/Center/SectionHeader";
 import { formatContentTemplate } from "@/content";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { useLanguage } from "@/provider/language-provider";
+import { useTheme } from "@/provider/theme-provider";
 
 const getDateSeed = (date: string) =>
   date.split("").reduce((seed, char) => seed + char.charCodeAt(0), 0);
@@ -60,6 +61,7 @@ export default function Calendar() {
     home: { github },
   } = useSiteContent();
   const { locale } = useLanguage();
+  const { theme } = useTheme();
   const currentYear = new Date().getUTCFullYear();
   const calendarLocale = locale;
   const { data, tooltipByDate } = useMemo(
@@ -127,6 +129,7 @@ export default function Calendar() {
           blockSize={10}
           renderBlock={renderBlock}
           labels={labels}
+          colorScheme={theme}
         />
       </div>
     </>
